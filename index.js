@@ -101,20 +101,14 @@ function aplicarFalta(nomeAlunoAusente) {
     });
 }
 
-const notaAleatoria = function () {
-    let nota = Math.floor(Math.random() * (10 * 10 - 1 * 10) + 1 * 10) / (1 * 10);
-    return nota;
-}
-
-function aplicarNota(nomeAlunoAvaliado) {
+function aplicarNota(nomeAlunoAvaliado, nota) {
     /*Ao receber um aluno devidamente cadastrado em nossa lista. Você deverá adicionar uma nota ao aluno na sua lista de notas. 
     Você deverá dar um feedback ao concluir a tarefa. Só poderá aplicar nota em aluno se o mesmo tiver matriculado em um curso.*/
     alunosDaEscola.forEach(aluno => {
         if (aluno.nome == nomeAlunoAvaliado && aluno.cursos.length > 0) {
-            let nota = notaAleatoria()
             aluno.notas.push(nota);
             console.log("O(a) aluno(a) " + nomeAlunoAvaliado + " recebeu a nova nota " + nota + ".")
-            console.log("Suas notas agora são: " + aluno.notas);
+            console.log("Suas notas agora são: " + formatarNotas(aluno));
         } else {
             if (aluno.cursos.length = 0) {
                 console.log("O(a) aluno(a) " + nomeAlunoAvaliado + " não está matriculado em nenhum curso");
@@ -165,8 +159,8 @@ aplicarFalta("Marjori");
 console.log("");
 
 console.log("Testando a 6a função: Aplicar Nota.")
-aplicarNota("Marjori");
-aplicarNota("Marjori");
+aplicarNota("Marjori", 7.4);
+aplicarNota("Marjori", 9.2);
 console.log("");
 
 console.log("Testando a 7a função: Aprovar Aluno.");
